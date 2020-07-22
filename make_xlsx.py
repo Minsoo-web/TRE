@@ -1,20 +1,6 @@
 import pandas as pd
-from tabulate import tabulate
 from pandas import DataFrame as df
 from collections import Counter
-
-
-def print_df(df):
-    """
-        dataframe을 가시적으로 콘솔창에 확인하기 위한 함수
-
-            Parameters:
-                dataframe
-
-            Returns:
-                None
-    """
-    print(tabulate(df, headers='keys', tablefmt='psql'))
 
 
 def make_file(name, row_list):
@@ -30,6 +16,7 @@ def make_file(name, row_list):
             Returns:
                 name.xlsx 
     """
+
     data = {
         "Test Suites": [],
         "Test Cases": [],
