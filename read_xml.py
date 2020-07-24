@@ -41,22 +41,26 @@ def clean():
     val = []
     datas = read_XML_files()
     for data in datas:
-        suite_name = data['testsuites']['testsuite']['@name']
-        test = data['testsuites']['testsuite']['testcase']
-        if isinstance(test, dict):
-            a = []
-            a.append(test)
-            test = a
-        val.append(
-            {
-                'name': suite_name,
-                'testcase': [
-                    {
-                        "name": [x['@name'].lstrip(suite_name) for x in test],
-                        "result": ["✓" if 'failure' not in r else "✕" for r in test],
-                    }
-                ]
-            }
-        )
+        try:
+            suite_name = data['testsuites']['testsuite']['@name']
+            test = data['testsuites']['testsuite']['testcase']
+        except KeyError:
+            pass
+        else:
+            if isinstance(test, dict):
+                a = []
+                a.append(test)
+                test = a
+            val.append(
+                {
+                    'name': suite_name,
+                    'testcase': [
+                        {
+                            "name": [x['@name'].lstrip(suite_name) for x in test],
+                            "result": ["✓" if 'failure' not in r else "✕" for r in test],
+                        }
+                    ]
+                }
+            )
 
     return val
