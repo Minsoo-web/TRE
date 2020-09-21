@@ -2,7 +2,7 @@ import json
 import xmltodict
 import glob
 
-FILE_LIST = glob.glob('qa-report/*.xml')
+FILE_LIST = glob.glob('reports/*.xml')
 
 
 def read_XML_files():
