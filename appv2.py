@@ -52,7 +52,7 @@ if __name__ == "__main__":
             case_name = case["name"].lstrip(suite_name).lstrip()
             data["Test Cases"].append(case_name)
 
-            if case["status"] == "PASSED":
+            if case["status"] == "PASSED" or case["status"] == "FIXED":
                 data["Result"].append('✓')
                 success += 1
             else:
