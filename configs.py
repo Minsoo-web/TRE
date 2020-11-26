@@ -22,7 +22,7 @@ class JenkinsConfig(__Config):
     """Contains the data needed to call Jenkins API"""
 
     def __init__(self):
-        self.__url = 'aHR0cDovL2NpY2QubW9iaWdlbi5jb20='
+        self.__url = 'aHR0cDovLzE5Mi4xNjguMTAyLjExNDozMjU5Nw=='
         self.__user = 'ZG9uZ2h5dW4=='
         self.__password = 'Z2hrZGVoZGd1czEh'
 
