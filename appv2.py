@@ -1,5 +1,6 @@
 import jenkins
 import json
+import os
 import pandas as pd
 
 from configs import JenkinsConfig
@@ -18,9 +19,9 @@ def new_jenkins():
 
 
 if __name__ == "__main__":
-
+    current_job = os.getenv('JOB_NAME', default='IRIS-E2E')
     jenkins = new_jenkins()
-    build_info = jenkins.get_job_info('IRIS-E2E')
+    build_info = jenkins.get_job_info(current_job)
     last_build_number = build_info['lastBuild']['number']
 
     result = jenkins.get_build_test_report('IRIS-E2E', last_build_number)
