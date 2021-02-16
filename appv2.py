@@ -25,6 +25,8 @@ if __name__ == "__main__":
     last_build_number = build_info['lastBuild']['number']
 
     result = jenkins.get_build_test_report('IRIS-E2E', last_build_number)
+    # with open("jenkins.json", "w", encoding="utf-8") as data:
+    #     json.dump(result, data)
     # parsing
 
     data = {
@@ -50,7 +52,7 @@ if __name__ == "__main__":
 
         # test case
         for case in suite["cases"]:
-            case_name = case["name"].lstrip(suite_name).lstrip()
+            case_name = " ".join(case["name"].split(" ")[1:])
             data["Test Cases"].append(case_name)
 
             if case["status"] == "PASSED" or case["status"] == "FIXED":
