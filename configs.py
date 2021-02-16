@@ -2,6 +2,8 @@
 
 
 import base64
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 from typing import NoReturn
 
@@ -16,6 +18,21 @@ class GlobalConfig(__Config):
     """It has settings to be used system-wide"""
 
     pass
+
+
+class GoogleSheetConfig():
+    def __init__(self):
+        scope = ['https://spreadsheets.google.com/feeds',
+                 'https://www.googleapis.com/auth/drive', ]
+        json_file_name = 'minsoo-web-6bea358cfc05.json'
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(
+            json_file_name, scope)
+
+        gc = gspread.authorize(credentials)
+
+        spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1GFATzxUWruisRL7s26Vo2T4aEcJ_RkGQz42P3FFCPig/edit?ts=5ff65f3d#gid=0'
+
+        self.doc = gc.open_by_url(spreadsheet_url)
 
 
 class JenkinsConfig(__Config):
