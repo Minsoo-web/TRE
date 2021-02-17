@@ -20,7 +20,7 @@ class JenkinsAPI():
 
         jenkins = self.new_jenkins()
         build_info = jenkins.get_job_info(current_job)
-        last_build_number = build_info['lastBuild']['number'] - 1
+        last_build_number = build_info['lastBuild']['number']
         self.result = jenkins.get_build_test_report(
             'IRIS-E2E', last_build_number)
 

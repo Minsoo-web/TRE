@@ -1,5 +1,4 @@
 __pycache__
 test.xlsx
 TRE.xlsx
-test.json
-jenkins.json
+*.json
